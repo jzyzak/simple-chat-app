@@ -8,12 +8,12 @@ class Server:
             port- the port of the socket, ranging from 6000 and 49000'''
         self.ip_address = ip
         self.port = port
-        if port not in range(6000,49000):
-            raise ValueError
-        split = ip.split(".")
-        for num in split:
-            if num not in range(0,256):
-                raise ValueError
+        #if port not in range(6000,49000):
+            #raise ValueError
+        #split = ip.split(".")
+        #for num in split:
+            #if num not in range(0,256):
+                #raise ValueError
             
 """
     def verifyIP(self, IP):
