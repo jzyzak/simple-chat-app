@@ -35,7 +35,7 @@ def acceptClientsAndMessages(conn, addr):
             serverClients[addr[0]].append(userInformation[0])
             serverClients[addr[0]].append(userInformation[1])
             print("Welcome " + serverClients[addr[0]][1] + "!")
-            conn.send("Welcome " + serverClients[addr[0]][1] + "!")
+            conn.send(("Welcome " + serverClients[addr[0]][1] + "!").encode())
         else:
             broadcastMessages(msg, addr)
 
