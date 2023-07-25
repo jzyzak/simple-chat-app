@@ -27,12 +27,12 @@ def sendingMessages():
     clientSocket.send(userInfo.encode())
 
     while True:
-        message = input()
+        message = input(clientUsername + ": ")
         message = clientUsername + ": " + message
         clientSocket.send(message.encode())
 
 _thread.start_new_thread(sendingMessages())
 
 while True:
-    message = clientSocket.recv(1024)
+    message = clientSocket.recv(2048)
     print(message.decode())
