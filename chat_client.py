@@ -31,8 +31,9 @@ def sendingMessages():
         message = clientUsername + ": " + message
         clientSocket.send(message.encode())
 
-_thread.start_new_thread(sendingMessages())
+_thread.start_new_thread(sendingMessages(), ())
 
 while True:
+    print("received something")
     message = clientSocket.recv(2048)
     print(message.decode())
