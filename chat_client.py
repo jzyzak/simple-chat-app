@@ -6,7 +6,7 @@ import uuid
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Can ask user to input later
-server_ip = ""
+server_ip = "10.31.7.146"
 server_port = 8432
 
 clientUsername = ""
