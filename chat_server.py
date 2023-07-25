@@ -4,7 +4,7 @@ import socket
 import _thread
 
 serverIP = "10.31.7.146"
-serverPort = "8432"
+serverPort = 8432
 serverClients = {}
 
 # Could probably add prompt to ask user to input the server IP address and server port number
