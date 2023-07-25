@@ -17,10 +17,11 @@ serverSocket.bind((serverIP, serverPort)) # binds the server socket to the given
 
 # Function to broadcast messages from server clients to all other clients
 def broadcastMessages(message, addr):
+    print(message)
     for client in serverClients:
         if(addr[0] != client):
-            print(message)
-            serverClients[client][0].send((serverClients[client][1] + ": " + message).encode())
+            #serverClients[client][0].send((serverClients[addr[0]][1] + ": " + message).encode())
+            serverClients[client][0].send((serverClients[addr[0]][1] + ": " + message).encode())
             #serverSocket.sendto((serverClients[client][1] + ": " + message).encode(), addr)
 
 def acceptClientsAndMessages(conn, addr):
