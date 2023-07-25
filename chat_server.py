@@ -21,9 +21,8 @@ def broadcastMessages(message, addr):
     for client in serverClients:
         if(addr[0] != client):
             #serverClients[client][0].send((serverClients[addr[0]][1] + ": " + message).encode())
-            print("did something")
-            #serverClients[client][0].send((serverClients[addr[0]][1] + ": " + message).encode())
-            serverSocket.send((serverClients[addr[0]][1] + ": " + message).encode())
+            serverClients[client][0].send(message.encode())
+            #serverSocket.send((serverClients[addr[0]][1] + ": " + message).encode())
             #serverSocket.sendall((serverClients[addr[0]]))
             #serverSocket.sendto((serverClients[client][1] + ": " + message).encode(), addr)
 
@@ -35,6 +34,7 @@ def acceptClientsAndMessages(conn, addr):
             userInformation = msg[6:].split(" ")
             serverClients[addr[0]].append(userInformation[0])
             serverClients[addr[0]].append(userInformation[1])
+            print("successfully added user " + serverClients[addr[0]][1])
         else:
             broadcastMessages(msg, addr)
 
