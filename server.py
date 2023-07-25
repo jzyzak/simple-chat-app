@@ -1,6 +1,9 @@
 #import socket
 
 class Server:
+    ip_address = ""
+    port = 0
+    
     def __init__(self, ip:str, port:int):
         '''Initializing the Server class
         Parameter:
