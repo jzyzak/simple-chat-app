@@ -25,8 +25,8 @@ def acceptClientsAndMessages(conn, addr):
     while True:
         data = conn.recv(1024)
         msg = data.decode()
-        if(msg.substr(0,4) == "INFO"):
-            userInformation = msg.substr(6).split(" ")
+        if(msg[0:4] == "INFO"):
+            userInformation = msg[6:].split(" ")
             serverClients[addr[0]].append(userInformation[0])
             serverClients[addr[0]].append(userInformation[1])
         else:
