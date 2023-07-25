@@ -34,7 +34,8 @@ def acceptClientsAndMessages(conn, addr):
             userInformation = msg[6:].split(" ")
             serverClients[addr[0]].append(userInformation[0])
             serverClients[addr[0]].append(userInformation[1])
-            print("successfully added user " + serverClients[addr[0]][1])
+            print("Welcome " + serverClients[addr[0]][1] + "!")
+            conn.send("Welcome " + serverClients[addr[0]][1] + "!")
         else:
             broadcastMessages(msg, addr)
 
