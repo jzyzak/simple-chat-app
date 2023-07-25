@@ -19,7 +19,7 @@ serverSocket.bind((serverIP, serverPort)) # binds the server socket to the given
 def broadcastMessages(message, addr):
     print(message)
     for client in serverClients:
-        if(addr[0] != client.ip_address):
+        if(addr[0] != client):
             #serverClients[client][0].send((serverClients[addr[0]][1] + ": " + message).encode())
             serverClients[client][0].send(message.encode())
             #serverSocket.send((serverClients[addr[0]][1] + ": " + message).encode())
