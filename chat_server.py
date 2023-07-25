@@ -4,16 +4,16 @@ import socket
 import _thread
 
 serverIP = "10.31.7.146"
-serverPort = "8432"
+serverPort = 8432
 serverClients = {}
 
 # Could probably add prompt to ask user to input the server IP address and server port number
 
 server = Server(serverIP, serverPort) # creates the server object
 
-serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # creates the server socket
+serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # creates the server socket
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # fixes issue with opening/closing too many connections too frequently by allowing the server IP address to be reused
-serverSocket.bind((server.ip_address, server.port)) # binds the server socket to the given IP address and port number
+serverSocket.bind((serverIP, serverPort)) # binds the server socket to the given IP address and port number
 
 # Function to broadcast messages from server clients to all other clients
 def broadcastMessages(message, addr):
