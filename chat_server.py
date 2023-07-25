@@ -21,7 +21,8 @@ def broadcastMessages(message, addr):
     for client in serverClients:
         if(addr[0] != client):
             #serverClients[client][0].send((serverClients[addr[0]][1] + ": " + message).encode())
-            serverClients[client][0].send(message.encode())
+            connection = serverClients[client][0]
+            connection.send(message.encode())
             #serverSocket.send((serverClients[addr[0]][1] + ": " + message).encode())
             #serverSocket.sendall((serverClients[addr[0]]))
             #serverSocket.sendto((serverClients[client][1] + ": " + message).encode(), addr)
@@ -35,7 +36,7 @@ def acceptClientsAndMessages(conn, addr):
             serverClients[addr[0]].append(userInformation[0])
             serverClients[addr[0]].append(userInformation[1])
             print("Welcome " + serverClients[addr[0]][1] + "!")
-            conn.send(("Welcome " + serverClients[addr[0]][1] + "!").encode())
+            #conn.send(("Welcome " + serverClients[addr[0]][1] + "!").encode())
         else:
             broadcastMessages(msg, addr)
 
@@ -43,4 +44,5 @@ while True:
     serverSocket.listen(5)
     conn, addr = serverSocket.accept()
     serverClients[addr[0]] = [conn]
+    conn.send(("Welcome " + serverClients[addr[0]][1] + "!").encode())
     _thread.start_new_thread(acceptClientsAndMessages, (conn, addr))
