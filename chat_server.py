@@ -35,5 +35,5 @@ def acceptClientsAndMessages(conn, addr):
 while True:
     serverSocket.listen(5)
     conn, addr = serverSocket.accept()
-    serverClients[addr[0]].append(conn)
+    serverClients[addr[0]] = [conn]
     _thread.start_new_thread(acceptClientsAndMessages, (conn, addr))
