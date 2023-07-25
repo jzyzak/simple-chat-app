@@ -19,7 +19,8 @@ serverSocket.bind((serverIP, serverPort)) # binds the server socket to the given
 def broadcastMessages(message, addr):
     for client in serverClients:
         if(addr[0] != client):
-            serverSocket.sendto((serverClients[client][1] + ": " + message).encode(), addr)
+            serverClients[client][0].send((serverClients[client][1] + ": " + message).encode())
+            #serverSocket.sendto((serverClients[client][1] + ": " + message).encode(), addr)
 
 def acceptClientsAndMessages(conn, addr):
     while True:
