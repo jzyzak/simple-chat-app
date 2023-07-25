@@ -44,5 +44,5 @@ while True:
     serverSocket.listen(5)
     conn, addr = serverSocket.accept()
     serverClients[addr[0]] = [conn]
-    conn.send(("Welcome " + serverClients[addr[0]][1] + "!").encode())
+    conn.send(("Welcome!").encode())
     _thread.start_new_thread(acceptClientsAndMessages, (conn, addr))
